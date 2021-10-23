@@ -29,17 +29,8 @@ namespace tic_tac_toe
         /// </summary>
         private void InitializeComponent()
         {
-            this.Box1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label_queue = new System.Windows.Forms.Label();
-            this.Box2 = new System.Windows.Forms.PictureBox();
-            this.Box3 = new System.Windows.Forms.PictureBox();
-            this.Box4 = new System.Windows.Forms.PictureBox();
-            this.Box5 = new System.Windows.Forms.PictureBox();
-            this.Box6 = new System.Windows.Forms.PictureBox();
-            this.Box7 = new System.Windows.Forms.PictureBox();
-            this.Box8 = new System.Windows.Forms.PictureBox();
-            this.Box9 = new System.Windows.Forms.PictureBox();
             this.label_P1 = new System.Windows.Forms.Label();
             this.label_P2 = new System.Windows.Forms.Label();
             this.button_start = new System.Windows.Forms.Button();
@@ -49,30 +40,25 @@ namespace tic_tac_toe
             this.label3 = new System.Windows.Forms.Label();
             this.Rename_button = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Box1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box8)).BeginInit();
+            this.Box9 = new System.Windows.Forms.PictureBox();
+            this.Box8 = new System.Windows.Forms.PictureBox();
+            this.Box7 = new System.Windows.Forms.PictureBox();
+            this.Box6 = new System.Windows.Forms.PictureBox();
+            this.Box5 = new System.Windows.Forms.PictureBox();
+            this.Box4 = new System.Windows.Forms.PictureBox();
+            this.Box3 = new System.Windows.Forms.PictureBox();
+            this.Box2 = new System.Windows.Forms.PictureBox();
+            this.Box1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Box9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Box1
-            // 
-            this.Box1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box1.Location = new System.Drawing.Point(181, 135);
-            this.Box1.Name = "Box1";
-            this.Box1.Size = new System.Drawing.Size(70, 70);
-            this.Box1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box1.TabIndex = 5;
-            this.Box1.TabStop = false;
-            this.Box1.Click += new System.EventHandler(this.Box1_Click);
             // 
             // label1
             // 
@@ -91,118 +77,6 @@ namespace tic_tac_toe
             this.label_queue.Size = new System.Drawing.Size(47, 13);
             this.label_queue.TabIndex = 10;
             this.label_queue.Text = "Игрок 1";
-            // 
-            // Box2
-            // 
-            this.Box2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box2.Location = new System.Drawing.Point(259, 135);
-            this.Box2.Name = "Box2";
-            this.Box2.Size = new System.Drawing.Size(70, 70);
-            this.Box2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box2.TabIndex = 11;
-            this.Box2.TabStop = false;
-            this.Box2.Click += new System.EventHandler(this.Box2_Click);
-            // 
-            // Box3
-            // 
-            this.Box3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box3.Location = new System.Drawing.Point(338, 135);
-            this.Box3.Name = "Box3";
-            this.Box3.Size = new System.Drawing.Size(70, 70);
-            this.Box3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box3.TabIndex = 12;
-            this.Box3.TabStop = false;
-            this.Box3.Click += new System.EventHandler(this.Box3_Click);
-            // 
-            // Box4
-            // 
-            this.Box4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box4.Location = new System.Drawing.Point(181, 211);
-            this.Box4.Name = "Box4";
-            this.Box4.Size = new System.Drawing.Size(70, 70);
-            this.Box4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box4.TabIndex = 13;
-            this.Box4.TabStop = false;
-            this.Box4.Click += new System.EventHandler(this.Box4_Click);
-            // 
-            // Box5
-            // 
-            this.Box5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box5.Location = new System.Drawing.Point(260, 211);
-            this.Box5.Name = "Box5";
-            this.Box5.Size = new System.Drawing.Size(70, 70);
-            this.Box5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box5.TabIndex = 14;
-            this.Box5.TabStop = false;
-            this.Box5.Click += new System.EventHandler(this.Box5_Click);
-            // 
-            // Box6
-            // 
-            this.Box6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box6.Location = new System.Drawing.Point(338, 211);
-            this.Box6.Name = "Box6";
-            this.Box6.Size = new System.Drawing.Size(70, 70);
-            this.Box6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box6.TabIndex = 15;
-            this.Box6.TabStop = false;
-            this.Box6.Click += new System.EventHandler(this.Box6_Click);
-            // 
-            // Box7
-            // 
-            this.Box7.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box7.Location = new System.Drawing.Point(181, 287);
-            this.Box7.Name = "Box7";
-            this.Box7.Size = new System.Drawing.Size(70, 70);
-            this.Box7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box7.TabIndex = 16;
-            this.Box7.TabStop = false;
-            this.Box7.Click += new System.EventHandler(this.Box7_Click);
-            // 
-            // Box8
-            // 
-            this.Box8.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box8.Location = new System.Drawing.Point(260, 287);
-            this.Box8.Name = "Box8";
-            this.Box8.Size = new System.Drawing.Size(70, 70);
-            this.Box8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box8.TabIndex = 17;
-            this.Box8.TabStop = false;
-            this.Box8.Click += new System.EventHandler(this.Box8_Click);
-            // 
-            // Box9
-            // 
-            this.Box9.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Box9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Box9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Box9.Location = new System.Drawing.Point(338, 287);
-            this.Box9.Name = "Box9";
-            this.Box9.Size = new System.Drawing.Size(70, 70);
-            this.Box9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Box9.TabIndex = 18;
-            this.Box9.TabStop = false;
-            this.Box9.Click += new System.EventHandler(this.Box9_Click);
             // 
             // label_P1
             // 
@@ -296,6 +170,132 @@ namespace tic_tac_toe
             this.comboBox1.TabIndex = 27;
             this.comboBox1.ValueMember = "1";
             // 
+            // Box9
+            // 
+            this.Box9.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box9.Location = new System.Drawing.Point(338, 287);
+            this.Box9.Name = "Box9";
+            this.Box9.Size = new System.Drawing.Size(70, 70);
+            this.Box9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box9.TabIndex = 18;
+            this.Box9.TabStop = false;
+            this.Box9.Click += new System.EventHandler(this.Box9_Click);
+            // 
+            // Box8
+            // 
+            this.Box8.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box8.Location = new System.Drawing.Point(260, 287);
+            this.Box8.Name = "Box8";
+            this.Box8.Size = new System.Drawing.Size(70, 70);
+            this.Box8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box8.TabIndex = 17;
+            this.Box8.TabStop = false;
+            this.Box8.Click += new System.EventHandler(this.Box8_Click);
+            // 
+            // Box7
+            // 
+            this.Box7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box7.Location = new System.Drawing.Point(181, 287);
+            this.Box7.Name = "Box7";
+            this.Box7.Size = new System.Drawing.Size(70, 70);
+            this.Box7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box7.TabIndex = 16;
+            this.Box7.TabStop = false;
+            this.Box7.Click += new System.EventHandler(this.Box7_Click);
+            // 
+            // Box6
+            // 
+            this.Box6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box6.Location = new System.Drawing.Point(338, 211);
+            this.Box6.Name = "Box6";
+            this.Box6.Size = new System.Drawing.Size(70, 70);
+            this.Box6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box6.TabIndex = 15;
+            this.Box6.TabStop = false;
+            this.Box6.Click += new System.EventHandler(this.Box6_Click);
+            // 
+            // Box5
+            // 
+            this.Box5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box5.Location = new System.Drawing.Point(260, 211);
+            this.Box5.Name = "Box5";
+            this.Box5.Size = new System.Drawing.Size(70, 70);
+            this.Box5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box5.TabIndex = 14;
+            this.Box5.TabStop = false;
+            this.Box5.Click += new System.EventHandler(this.Box5_Click);
+            // 
+            // Box4
+            // 
+            this.Box4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box4.Location = new System.Drawing.Point(181, 211);
+            this.Box4.Name = "Box4";
+            this.Box4.Size = new System.Drawing.Size(70, 70);
+            this.Box4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box4.TabIndex = 13;
+            this.Box4.TabStop = false;
+            this.Box4.Click += new System.EventHandler(this.Box4_Click);
+            // 
+            // Box3
+            // 
+            this.Box3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box3.Location = new System.Drawing.Point(338, 135);
+            this.Box3.Name = "Box3";
+            this.Box3.Size = new System.Drawing.Size(70, 70);
+            this.Box3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box3.TabIndex = 12;
+            this.Box3.TabStop = false;
+            this.Box3.Click += new System.EventHandler(this.Box3_Click);
+            // 
+            // Box2
+            // 
+            this.Box2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box2.Location = new System.Drawing.Point(259, 135);
+            this.Box2.Name = "Box2";
+            this.Box2.Size = new System.Drawing.Size(70, 70);
+            this.Box2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box2.TabIndex = 11;
+            this.Box2.TabStop = false;
+            this.Box2.Click += new System.EventHandler(this.Box2_Click);
+            // 
+            // Box1
+            // 
+            this.Box1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Box1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Box1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Box1.Location = new System.Drawing.Point(181, 135);
+            this.Box1.Name = "Box1";
+            this.Box1.Size = new System.Drawing.Size(70, 70);
+            this.Box1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Box1.TabIndex = 5;
+            this.Box1.TabStop = false;
+            this.Box1.Click += new System.EventHandler(this.Box1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,15 +325,15 @@ namespace tic_tac_toe
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.Box1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Box8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Box1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

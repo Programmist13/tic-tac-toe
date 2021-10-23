@@ -153,14 +153,14 @@ namespace tic_tac_toe
             {
                 if (Program.f1.queue == 0) //ход игрока 1
                 {
-                    Program.f1.Controls[Name_object].BackgroundImage = Image.FromFile(@"C:\Users\Admin\source\repos\tic tac toe\Resources\Chrest.jpg");
+                    Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Chrest);
                     Program.f1.matrix[m] = 1;
                     Program.f1.queue = 1;
                     Program.f1.label_queue.Text = Program.f1.Name_P2;
                 }
                 else //ход игрока 2
                 {
-                    Program.f1.Controls[Name_object].BackgroundImage = Image.FromFile(@"C:\Users\Admin\source\repos\tic tac toe\Resources\Zero.jpg");
+                    Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Zero);
                     Program.f1.matrix[m] = 2;
                     Program.f1.queue = 0;
                     Program.f1.label_queue.Text = Program.f1.Name_P1;
