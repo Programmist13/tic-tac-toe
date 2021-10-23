@@ -8,31 +8,59 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-// TODO: определить как после завершения метода хода игрока (грубо говоря после отрисовки хода) вызвать метод бота
+// TODO: закончить ходы бота в параллельном потоке (сейчас только изменяется имя игрока с задержкой в 5с.) конструкция готова, нужно только усовершенствовать
+// TODO: Проверить бота
 // TODO: Сделать приятный дизайн
 // TODO: Упаковать всё в 1 exe файл
-// Проверка синхронизации кода через облако
+
 
 namespace tic_tac_toe
 {
     public partial class Form1 : Form
     {
-        public int queue; //Текущий игрок 
+        public int queue; //Текущий игрок 0-первый, 1-второй
         public int[] matrix = new int[10]; //Матрица ходов игроков на поле. 0-пустая ячейка, 1-поставил ход игрок1, 2-игрок2
         public string Name_P1 = "Игрок 1";
         public string Name_P2 = "Игрок 2";
+        string Bot_box_move;
+        int Bot_move_index;
+
         public Form1()
         {
             Program.f1 = this; //f1 теперь будет ссылкой для доступа к форме
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
+
+        }
+
+        
+          
+        public void change_control_form (string text) //функция которую я хочу вызвать из отдельного потока -------создание делегата? для изменения значения контрола winform в основном потоке из параллельного потока
+        {
+            Program.f1.label_queue.Text = text;
+        }
+        private void Bot_move_thread(object sender, EventArgs e)
+        {
+            if (queue == 1 & comboBox1.SelectedIndex == 0)
+            {
+                Thread Bot_Thread = new Thread(this.Bot_move);
+                Bot_Thread.Start();
+            }
+        }
+        private void Bot_move () // Приказываем боту ходить после изменения картинки (окончания хода пользователя)
+        {
+                Bot Botq = new Bot();
+                Bot_move_index = Botq.move();
+                Bot_box_move = "Box" + Bot_move_index;
+                motion Bot1 = new motion(Bot_box_move, Bot_move_index);
+                Bot1.calc();
         }
 
         #region Box
         private void Box1_Click(object sender, EventArgs e)
         {
             motion Box1 = new motion("Box1", 1);
-            Box1.calc();
+            Box1.calc(); 
         }
 
         private void Box2_Click(object sender, EventArgs e)
@@ -153,45 +181,58 @@ namespace tic_tac_toe
             {
                 if (Program.f1.queue == 0) //ход игрока 1
                 {
-                    Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Chrest);
-                    Program.f1.matrix[m] = 1;
                     Program.f1.queue = 1;
+                    Program.f1.matrix[m] = 1;
                     Program.f1.label_queue.Text = Program.f1.Name_P2;
+                    Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Chrest);
                 }
-                else //ход игрока 2
+                else
                 {
-                    Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Zero);
-                    Program.f1.matrix[m] = 2;
                     Program.f1.queue = 0;
-                    Program.f1.label_queue.Text = Program.f1.Name_P1;
+                    Program.f1.matrix[m] = 2;
+                    Program.f1.Invoke(new Update_label(Program.f1.change_control_form), Program.f1.Name_P1);
                 }
+                /*else //ход игрока 2
+                {
+                    Program.f1.queue = 0;
+                    Program.f1.matrix[m] = 2;
+                    Program.f1.label_queue.Text = Program.f1.Name_P1;
+                    Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Zero);
+
+                }*/
                 check.check_game();
-               
             }
             
         }
 
-        public int Bot () //Ход бота
+        delegate void Update_label(string text);
+
+    }
+
+    public class Bot
+    {
+        public int move() //Ход бота
         {
-            int Bot_motion;
             // Просканировать поле, найти пустые ячейки и выписать их в отдельный новосозданный массив
             // узнать длину массива
             // зарандомить ячейку массива ограниченую его длиной
             // вернуть в return значение ячейки массива, что и будет являться ходом бота
-            int[] bot_matrix = new int[10]; //спомогательная матрица для определения свободных ячеек для хода бота
+            Thread.Sleep(5000);
+            int Bot_motion;
+            int[] bot_matrix = new int[10]; //вспомогательная матрица для определения свободных ячеек для хода бота
             int m = 1;
-            int count_move = 0; 
-            for (int i=1; i<10; i++) // ищем пустые поля для хода
+            int count_move = 0;
+            for (int i = 1; i < 10; i++) // ищем пустые поля для хода
             {
-                if (Program.f1.matrix[i]==0)
+                if (Program.f1.matrix[i] == 0)
                 {
-                    bot_matrix[m] = Program.f1.matrix[i];
+                    bot_matrix[m] = i;
                     m++;
-                }    
+                }
             }
-            for (int i=0; i<10; i++) // считаем количество свободных ячеек
+            for (int i = 1; i < 10; i++) // считаем количество свободных ячеек
             {
-                if (bot_matrix[i]!=0)
+                if (bot_matrix[i] != 0)
                 {
                     count_move++;
                 }
@@ -200,8 +241,10 @@ namespace tic_tac_toe
             // делаем случайный ход бота в зависимости от свободных ячеек
             Random rnd = new Random();
             Bot_motion = rnd.Next(count_move);
-            return Bot_motion;
+            return bot_matrix[count_move];
+
         }
+
     }
     public class check //проверяем конец игры
     {
@@ -251,6 +294,21 @@ namespace tic_tac_toe
                 end_game = false;
             }
 
+        }
+    }
+
+    static class Helpers //вспомогательный класс для работы с контролами WinForm из не основного потока
+    {
+        static public void MyInvoke(this Control control, Action action)
+        {
+            if (control.InvokeRequired)
+            {
+                control.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
     }
 }

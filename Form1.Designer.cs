@@ -49,6 +49,7 @@ namespace tic_tac_toe
             this.Box3 = new System.Windows.Forms.PictureBox();
             this.Box2 = new System.Windows.Forms.PictureBox();
             this.Box1 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Box9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box7)).BeginInit();
@@ -59,6 +60,7 @@ namespace tic_tac_toe
             ((System.ComponentModel.ISupportInitialize)(this.Box2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box1)).BeginInit();
             this.SuspendLayout();
+
             // 
             // label1
             // 
@@ -105,7 +107,7 @@ namespace tic_tac_toe
             this.button_start.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button_start.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_start.Font = new System.Drawing.Font("CAREL_TERM", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_start.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_start.Location = new System.Drawing.Point(1, 0);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(165, 70);
@@ -182,6 +184,7 @@ namespace tic_tac_toe
             this.Box9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box9.TabIndex = 18;
             this.Box9.TabStop = false;
+            this.Box9.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box9.Click += new System.EventHandler(this.Box9_Click);
             // 
             // Box8
@@ -196,6 +199,7 @@ namespace tic_tac_toe
             this.Box8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box8.TabIndex = 17;
             this.Box8.TabStop = false;
+            this.Box8.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box8.Click += new System.EventHandler(this.Box8_Click);
             // 
             // Box7
@@ -210,6 +214,7 @@ namespace tic_tac_toe
             this.Box7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box7.TabIndex = 16;
             this.Box7.TabStop = false;
+            this.Box7.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box7.Click += new System.EventHandler(this.Box7_Click);
             // 
             // Box6
@@ -224,6 +229,7 @@ namespace tic_tac_toe
             this.Box6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box6.TabIndex = 15;
             this.Box6.TabStop = false;
+            this.Box6.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box6.Click += new System.EventHandler(this.Box6_Click);
             // 
             // Box5
@@ -238,6 +244,7 @@ namespace tic_tac_toe
             this.Box5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box5.TabIndex = 14;
             this.Box5.TabStop = false;
+            this.Box5.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box5.Click += new System.EventHandler(this.Box5_Click);
             // 
             // Box4
@@ -252,6 +259,7 @@ namespace tic_tac_toe
             this.Box4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box4.TabIndex = 13;
             this.Box4.TabStop = false;
+            this.Box4.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box4.Click += new System.EventHandler(this.Box4_Click);
             // 
             // Box3
@@ -266,6 +274,7 @@ namespace tic_tac_toe
             this.Box3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box3.TabIndex = 12;
             this.Box3.TabStop = false;
+            this.Box3.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box3.Click += new System.EventHandler(this.Box3_Click);
             // 
             // Box2
@@ -280,6 +289,7 @@ namespace tic_tac_toe
             this.Box2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box2.TabIndex = 11;
             this.Box2.TabStop = false;
+            this.Box2.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box2.Click += new System.EventHandler(this.Box2_Click);
             // 
             // Box1
@@ -294,13 +304,22 @@ namespace tic_tac_toe
             this.Box1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Box1.TabIndex = 5;
             this.Box1.TabStop = false;
+            this.Box1.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box1.Click += new System.EventHandler(this.Box1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(180, 379);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(228, 20);
+            this.textBox1.TabIndex = 28;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 450);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Rename_button);
             this.Controls.Add(this.label3);
@@ -362,6 +381,7 @@ namespace tic_tac_toe
         public System.Windows.Forms.Button Rename_button;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
 
