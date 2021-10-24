@@ -8,12 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-// TODO: Проверить бота (усложнить бота, а то он слишком тупой
+// TODO: Проверить бота (усложнить бота, а то он слишком тупой)
 // TODO: Сделать приятный дизайн
 // TODO: Упаковать всё в 1 exe файл
 // TODO: Можно упростить код, когда передаётся ход, чтобы Name_object брался автоматически от хода игрока по средствам "Box"+m
-// TODO: Во время новой игры бот ходит без ожидания игрока 1
-// TODO: Нет проверки победы бота
+// TODO: Сделать рефаторинг кода
 
 
 namespace tic_tac_toe
@@ -35,16 +34,19 @@ namespace tic_tac_toe
             comboBox1.SelectedIndex = 0;
 
         }
-
+        public void to_check()
+        {
+            check.check_game();
+        }
         public void change_control_form (string text) //функция которую я хочу вызвать из отдельного потока -------создание делегата? для изменения значения контрола winform в основном потоке из параллельного потока
         {
             Program.f1.label_queue.Text = text;
             Controls[Bot_box_move].BackgroundImage = new Bitmap(Properties.Resources.Zero);
             Controls[Bot_box_move].Enabled = false;
         }
-        private void Bot_move_thread(object sender, EventArgs e)
+        private void Bot_move_thread()
         {
-            if (queue == 1 & comboBox1.SelectedIndex == 0)
+            if (queue == 1 & comboBox1.SelectedIndex == 0 & !end_game)
             {
                 Thread Bot_Thread = new Thread(this.Bot_move);
                 Bot_Thread.Start();
@@ -52,63 +54,76 @@ namespace tic_tac_toe
         }
         private void Bot_move () //Ход бота выполняется отдельным потоком. Приказываем боту ходить после изменения картинки (окончания хода пользователя)
         {
+            Thread.Sleep(500);
+            if (!Program.f1.end_game)
+            {
                 Bot Botq = new Bot();
-                Botq.move();                
+                Botq.move();
+            }
         }
 
         #region Box
         private void Box1_Click(object sender, EventArgs e)
         {
             motion Box1 = new motion("Box1", 1);
-            Box1.calc(); 
+            Box1.calc();
+            Bot_move_thread();
         }
 
         private void Box2_Click(object sender, EventArgs e)
         {
             motion Box2 = new motion("Box2", 2);
             Box2.calc();
+            Bot_move_thread();
         }
 
         private void Box3_Click(object sender, EventArgs e)
         {
             motion Box3 = new motion("Box3", 3);
             Box3.calc();
+            Bot_move_thread();
         }
 
         private void Box4_Click(object sender, EventArgs e)
         {
             motion Box4 = new motion("Box4", 4);
             Box4.calc();
+            Bot_move_thread();
         }
 
         private void Box5_Click(object sender, EventArgs e)
         {
             motion Box5 = new motion("Box5", 5);
             Box5.calc();
+            Bot_move_thread();
         }
 
         private void Box6_Click(object sender, EventArgs e)
         {
             motion Box6 = new motion("Box6", 6);
             Box6.calc();
+            Bot_move_thread();
         }
 
         private void Box7_Click(object sender, EventArgs e)
         {
             motion Box7 = new motion("Box7", 7);
             Box7.calc();
+            Bot_move_thread();
         }
 
         private void Box8_Click(object sender, EventArgs e)
         {
             motion Box8 = new motion("Box8", 8);
             Box8.calc();
+            Bot_move_thread();
         }
 
         private void Box9_Click(object sender, EventArgs e)
         {
             motion Box9 = new motion("Box9", 9);
             Box9.calc();
+            Bot_move_thread();
         }
         #endregion
 
@@ -147,6 +162,7 @@ namespace tic_tac_toe
             Program.f1.label1.Visible = true;
             Program.f1.label_queue.Visible = true;
             Program.f1.end_game = false;
+            Bot_move_thread();
         }
 
         private void Rename_button_Click(object sender, EventArgs e)
@@ -201,15 +217,14 @@ namespace tic_tac_toe
     public class Bot
     {
         delegate void Update_label(string text);
+        delegate void check_game();
         public void move() //Ход бота
         {
             // Просканировать поле, найти пустые ячейки и выписать их в отдельный новосозданный массив
             // узнать длину массива
             // зарандомить ячейку массива ограниченую его длиной
             // вернуть в return значение ячейки массива, что и будет являться ходом бота
-            Thread.Sleep(500);
-            if (!Program.f1.end_game)
-            {
+
                 int Bot_motion;
                 int[] bot_matrix = new int[10]; //вспомогательная матрица для определения свободных ячеек для хода бота
                 int m = 1;
@@ -238,14 +253,16 @@ namespace tic_tac_toe
                 Program.f1.Bot_move_index = bot_matrix[Bot_motion];
                 Program.f1.Bot_box_move = "Box" + Program.f1.Bot_move_index;
                 Program.f1.Invoke(new Update_label(Program.f1.change_control_form), Program.f1.Name_P1);
-            }
+                Program.f1.Invoke(new check_game(Program.f1.to_check));
         }
 
     }
+
     public class check //проверяем конец игры
     {
         public static void check_game ()
         {
+
             // Проверка выигрыша игрока 1. Проверяем поле на 3 креста подряд
            if (Program.f1.matrix[1] == 1 && Program.f1.matrix[2] == 1 && Program.f1.matrix[3] == 1 ||
                Program.f1.matrix[4] == 1 && Program.f1.matrix[5] == 1 && Program.f1.matrix[6] == 1 ||

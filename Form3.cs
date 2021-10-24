@@ -14,7 +14,6 @@ namespace tic_tac_toe
     {
         public Form3()
         {
-            Program.f3 = this;
             InitializeComponent();
         }
     }
