@@ -12,6 +12,8 @@ using System.Threading;
 // TODO: Проверить бота
 // TODO: Сделать приятный дизайн
 // TODO: Упаковать всё в 1 exe файл
+// TODO: Можно упростить код, уогда передаётся ход, чтобы Name_object брался автоматически от хода игрока по средствам "Box"+m
+// TODO: Добавить в обработчик нажатия кнопки, что когда идёт игра с ботом и сейчас ход бота, нажатия мыши игрока 1 не обрабатываются
 
 
 namespace tic_tac_toe
@@ -33,8 +35,6 @@ namespace tic_tac_toe
 
         }
 
-        
-          
         public void change_control_form (string text) //функция которую я хочу вызвать из отдельного потока -------создание делегата? для изменения значения контрола winform в основном потоке из параллельного потока
         {
             Program.f1.label_queue.Text = text;
@@ -48,7 +48,6 @@ namespace tic_tac_toe
                 Bot_Thread.Start();
             }
         }
-
         private void Bot_move () //Ход бота выполняется отдельным потоком. Приказываем боту ходить после изменения картинки (окончания хода пользователя)
         {
                 Bot Botq = new Bot();
@@ -182,6 +181,7 @@ namespace tic_tac_toe
                     Program.f1.queue = 1;
                     Program.f1.matrix[m] = 1;
                     Program.f1.label_queue.Text = Program.f1.Name_P2;
+                    Program.f1.Controls[Name_object].Enabled = false;
                     Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Chrest);
                 }
                 else //ход игрока 2
@@ -189,6 +189,7 @@ namespace tic_tac_toe
                     Program.f1.queue = 0;
                     Program.f1.matrix[m] = 2;
                     Program.f1.label_queue.Text = Program.f1.Name_P1;
+                    Program.f1.Controls[Name_object].Enabled = false;
                     Program.f1.Controls[Name_object].BackgroundImage = new Bitmap(Properties.Resources.Zero);
                 }
                 check.check_game();
@@ -197,7 +198,6 @@ namespace tic_tac_toe
         
 
     }
-
     public class Bot
     {
         delegate void Update_label(string text);
@@ -207,7 +207,7 @@ namespace tic_tac_toe
             // узнать длину массива
             // зарандомить ячейку массива ограниченую его длиной
             // вернуть в return значение ячейки массива, что и будет являться ходом бота
-            Thread.Sleep(1500);
+            Thread.Sleep(500);
             int Bot_motion;
             int[] bot_matrix = new int[10]; //вспомогательная матрица для определения свободных ячеек для хода бота
             int m = 1;
@@ -231,11 +231,14 @@ namespace tic_tac_toe
             // делаем случайный ход бота в зависимости от свободных ячеек
             Random rnd = new Random();
             Bot_motion = rnd.Next(count_move);
-            //return bot_matrix[count_move];
             Program.f1.queue = 0;
-            Program.f1.matrix[bot_matrix[count_move]] = 2;
-            Program.f1.Bot_move_index = bot_matrix[count_move];
+            Program.f1.matrix[bot_matrix[Bot_motion]] = 2;
+            Program.f1.Bot_move_index = bot_matrix[Bot_motion];
             Program.f1.Bot_box_move = "Box" + Program.f1.Bot_move_index;
+            sdf
+                ваываыва
+
+            Program.f1.Controls[Bot_box_move].Enabled = false;
             Program.f1.Invoke(new Update_label(Program.f1.change_control_form), Program.f1.Name_P1);
         }
 
