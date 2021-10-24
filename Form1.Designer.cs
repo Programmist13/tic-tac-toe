@@ -49,7 +49,6 @@ namespace tic_tac_toe
             this.Box3 = new System.Windows.Forms.PictureBox();
             this.Box2 = new System.Windows.Forms.PictureBox();
             this.Box1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Box9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box7)).BeginInit();
@@ -60,7 +59,6 @@ namespace tic_tac_toe
             ((System.ComponentModel.ISupportInitialize)(this.Box2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Box1)).BeginInit();
             this.SuspendLayout();
-
             // 
             // label1
             // 
@@ -307,19 +305,11 @@ namespace tic_tac_toe
             this.Box1.BackgroundImageChanged += new System.EventHandler(this.Bot_move_thread);
             this.Box1.Click += new System.EventHandler(this.Box1_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(180, 379);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 20);
-            this.textBox1.TabIndex = 28;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(490, 450);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Rename_button);
             this.Controls.Add(this.label3);
@@ -381,7 +371,6 @@ namespace tic_tac_toe
         public System.Windows.Forms.Button Rename_button;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox comboBox1;
-        public System.Windows.Forms.TextBox textBox1;
     }
 }
 

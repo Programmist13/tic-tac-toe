@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-// TODO: закончить ходы бота в параллельном потоке (сейчас только изменяется имя игрока с задержкой в 5с.) конструкция готова, нужно только усовершенствовать
-// TODO: Проверить бота
+// TODO: Проверить бота (усложнить бота, а то он слишком тупой
 // TODO: Сделать приятный дизайн
 // TODO: Упаковать всё в 1 exe файл
-// TODO: Можно упростить код, уогда передаётся ход, чтобы Name_object брался автоматически от хода игрока по средствам "Box"+m
-// TODO: Добавить в обработчик нажатия кнопки, что когда идёт игра с ботом и сейчас ход бота, нажатия мыши игрока 1 не обрабатываются
+// TODO: Можно упростить код, когда передаётся ход, чтобы Name_object брался автоматически от хода игрока по средствам "Box"+m
+// TODO: Во время новой игры бот ходит без ожидания игрока 1
+// TODO: Нет проверки победы бота
 
 
 namespace tic_tac_toe
@@ -26,6 +26,7 @@ namespace tic_tac_toe
         public string Name_P2 = "Игрок 2";
         public string Bot_box_move;
         public int Bot_move_index;
+        public bool end_game;
 
         public Form1()
         {
@@ -39,6 +40,7 @@ namespace tic_tac_toe
         {
             Program.f1.label_queue.Text = text;
             Controls[Bot_box_move].BackgroundImage = new Bitmap(Properties.Resources.Zero);
+            Controls[Bot_box_move].Enabled = false;
         }
         private void Bot_move_thread(object sender, EventArgs e)
         {
@@ -140,12 +142,11 @@ namespace tic_tac_toe
             Program.f1.Box7.BackgroundImage = null;
             Program.f1.Box8.BackgroundImage = null;
             Program.f1.Box9.BackgroundImage = null;
-
             Program.f1.label_P1.Visible = false;
             Program.f1.label_P2.Visible = false;
             Program.f1.label1.Visible = true;
             Program.f1.label_queue.Visible = true;
-
+            Program.f1.end_game = false;
         }
 
         private void Rename_button_Click(object sender, EventArgs e)
@@ -173,10 +174,9 @@ namespace tic_tac_toe
         public motion (string n, int m) { Name_object = n; this.m = m; } //конструктор класса
         public void calc()
         {
-
             //Используем эту конструкцию для изенения именно того Box'а с которого осуществился переход
-            
-                if (Program.f1.queue == 0) //ход игрока 1
+            if (Program.f1.comboBox1.SelectedIndex==0 & Program.f1.queue == 0 || Program.f1.comboBox1.SelectedIndex == 1)
+            if (Program.f1.queue == 0) //ход игрока 1
                 {
                     Program.f1.queue = 1;
                     Program.f1.matrix[m] = 1;
@@ -208,38 +208,37 @@ namespace tic_tac_toe
             // зарандомить ячейку массива ограниченую его длиной
             // вернуть в return значение ячейки массива, что и будет являться ходом бота
             Thread.Sleep(500);
-            int Bot_motion;
-            int[] bot_matrix = new int[10]; //вспомогательная матрица для определения свободных ячеек для хода бота
-            int m = 1;
-            int count_move = 0;
-            for (int i = 1; i < 10; i++) // ищем пустые поля для хода
+            if (!Program.f1.end_game)
             {
-                if (Program.f1.matrix[i] == 0)
+                int Bot_motion;
+                int[] bot_matrix = new int[10]; //вспомогательная матрица для определения свободных ячеек для хода бота
+                int m = 1;
+                int count_move = 0;
+                for (int i = 1; i < 10; i++) // ищем пустые поля для хода
                 {
-                    bot_matrix[m] = i;
-                    m++;
+                    if (Program.f1.matrix[i] == 0)
+                    {
+                        bot_matrix[m] = i;
+                        m++;
+                    }
                 }
-            }
-            for (int i = 1; i < 10; i++) // считаем количество свободных ячеек
-            {
-                if (bot_matrix[i] != 0)
+                for (int i = 1; i < 10; i++) // считаем количество свободных ячеек
                 {
-                    count_move++;
+                    if (bot_matrix[i] != 0)
+                    {
+                        count_move++;
+                    }
+                    else { break; }
                 }
-                else { break; }
+                // делаем случайный ход бота в зависимости от свободных ячеек
+                Random rnd = new Random();
+                Bot_motion = rnd.Next(1, count_move);
+                Program.f1.queue = 0;
+                Program.f1.matrix[bot_matrix[Bot_motion]] = 2;
+                Program.f1.Bot_move_index = bot_matrix[Bot_motion];
+                Program.f1.Bot_box_move = "Box" + Program.f1.Bot_move_index;
+                Program.f1.Invoke(new Update_label(Program.f1.change_control_form), Program.f1.Name_P1);
             }
-            // делаем случайный ход бота в зависимости от свободных ячеек
-            Random rnd = new Random();
-            Bot_motion = rnd.Next(count_move);
-            Program.f1.queue = 0;
-            Program.f1.matrix[bot_matrix[Bot_motion]] = 2;
-            Program.f1.Bot_move_index = bot_matrix[Bot_motion];
-            Program.f1.Bot_box_move = "Box" + Program.f1.Bot_move_index;
-            sdf
-                ваываыва
-
-            Program.f1.Controls[Bot_box_move].Enabled = false;
-            Program.f1.Invoke(new Update_label(Program.f1.change_control_form), Program.f1.Name_P1);
         }
 
     }
@@ -247,7 +246,6 @@ namespace tic_tac_toe
     {
         public static void check_game ()
         {
-            bool end_game=false;
             // Проверка выигрыша игрока 1. Проверяем поле на 3 креста подряд
            if (Program.f1.matrix[1] == 1 && Program.f1.matrix[2] == 1 && Program.f1.matrix[3] == 1 ||
                Program.f1.matrix[4] == 1 && Program.f1.matrix[5] == 1 && Program.f1.matrix[6] == 1 ||
@@ -259,7 +257,7 @@ namespace tic_tac_toe
                Program.f1.matrix[7] == 1 && Program.f1.matrix[5] == 1 && Program.f1.matrix[3] == 1 )
             {
                 Program.f1.label_P1.Visible = true;
-                end_game = true;
+                Program.f1.end_game = true;
             }
             // Проверка выигрыша игрока 2. Проверяем поле на 3 нолика подряд
             if (Program.f1.matrix[1] == 2 && Program.f1.matrix[2] == 2 && Program.f1.matrix[3] == 2 ||
@@ -272,10 +270,10 @@ namespace tic_tac_toe
                 Program.f1.matrix[7] == 2 && Program.f1.matrix[5] == 2 && Program.f1.matrix[3] == 2)
             {
                 Program.f1.label_P2.Visible = true;
-                end_game = true;
+                Program.f1.end_game = true;
             }
 
-            if (end_game)   //блокируем поле от повторных нажатий по окончанию игры
+            if (Program.f1.end_game)   //блокируем поле от повторных нажатий по окончанию игры
             {
                 Program.f1.Box1.Enabled = false;
                 Program.f1.Box2.Enabled = false;
@@ -288,7 +286,6 @@ namespace tic_tac_toe
                 Program.f1.Box9.Enabled = false;
                 Program.f1.label1.Visible = false;
                 Program.f1.label_queue.Visible = false;
-                end_game = false;
             }
 
         }
