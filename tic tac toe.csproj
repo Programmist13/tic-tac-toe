@@ -104,5 +104,17 @@
   <ItemGroup>
     <None Include="Resources\Chrest1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\48741e5d19b086f.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\razmytyj-yarkij-fon-s-poloskami.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1614399646_60-p-temnii-sovremennii-fon-77.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Тропикания-начать-играть.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

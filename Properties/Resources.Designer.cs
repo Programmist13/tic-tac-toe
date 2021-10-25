@@ -63,6 +63,26 @@ namespace tic_tac_toe.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1614399646_60_p_temnii_sovremennii_fon_77 {
+            get {
+                object obj = ResourceManager.GetObject("1614399646_60-p-temnii-sovremennii-fon-77", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _48741e5d19b086f {
+            get {
+                object obj = ResourceManager.GetObject("48741e5d19b086f", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Chrest {
             get {
                 object obj = ResourceManager.GetObject("Chrest", resourceCulture);
@@ -73,9 +93,29 @@ namespace tic_tac_toe.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap razmytyj_yarkij_fon_s_poloskami {
+            get {
+                object obj = ResourceManager.GetObject("razmytyj-yarkij-fon-s-poloskami", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Zero {
             get {
                 object obj = ResourceManager.GetObject("Zero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Тропикания_начать_играть {
+            get {
+                object obj = ResourceManager.GetObject("Тропикания-начать-играть", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

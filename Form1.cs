@@ -180,6 +180,16 @@ namespace tic_tac_toe
                 label_queue.Text = Name_P2;
             }
         }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            //button_start.BackColor = Color.Blue;
+
+
+            button_start.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+
+
+        }
         #endregion
     }
     public class motion //осуществляем изменение ячейки поля обрабатывая ход игрока
